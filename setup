@@ -1,0 +1,25 @@
+sudo apt install stunnel -y &> /dev/null
+sudo rm -rf /etc/stunnel
+sudo mkdir /etc/stunnel
+
+
+sudo rm -rf /etc/stunnel/stunnel.pem &> /dev/null
+sudo rm -rf /etc/stunnel/stunnel.conf &> /dev/null 
+sudo rm -rf /etc/default/stunnel4
+
+sudo wget https://github.com/githubaunglaymyanmar1/stunnel/raw/main/stunnel4 &> /dev/null
+sudo mv stunnel4 /etc/default/ &> /dev/null
+
+sudo cat > /etc/stunnel/stunnel.conf <<EOF
+
+
+pid=/var/run/stunnel4/stunnel.pid
+
+client=yes
+[configure]
+accept = 127.0.0.1:1111
+connect = aungmyozaw.duckdns.org:444
+
+
+EOF
+sudo service stunnel4 restart
