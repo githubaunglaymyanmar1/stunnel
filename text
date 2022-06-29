@@ -1,0 +1,1 @@
+printf "$(ifconfig | grep --after-context=1 docker0 | grep --after-context=1 --max-count=1 docker0 | grep inet | cut -d 'i' -f2 | cut -d 'n' -f2 |  cut -d 'e' -f2 |  cut -d 't' -f2 | cut -d ' ' -f2)
