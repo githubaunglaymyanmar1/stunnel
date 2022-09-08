@@ -12,10 +12,12 @@ sudo rm -rf /etc/default/stunnel4
 
 sudo wget https://github.com/githubaunglaymyanmar1/stunnel/raw/main/stunnel4 &> /dev/null
 sudo mv stunnel4 /etc/default/ &> /dev/null
+sudo wget https://github.com/githubaunglaymyanmar1/stunnel/raw/main/psk/client/psk.txt &> /dev/null 
+sudo mv psk.txt /etc/stunnel/
 
 sudo cat > /etc/stunnel/stunnel.conf <<EOF
 
-
+PSKsecrets = /etc/stunnel/psk.txt
 pid=/var/run/stunnel4/stunnel.pid
 
 client=yes
